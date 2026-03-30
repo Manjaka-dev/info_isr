@@ -38,7 +38,7 @@ services:
       retries: 20
     volumes:
       - db_data:/var/lib/mysql
-      - ./data/data.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./data/table.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
 
 volumes:
   db_data:

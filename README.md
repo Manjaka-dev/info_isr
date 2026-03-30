@@ -37,7 +37,7 @@ docker compose down -v
 docker compose up -d --build
 ```
 
-Le fichier `data/data.sql` est importé automatiquement au premier démarrage (volume vide).
+Le fichier `data/table.sql` est importé automatiquement au premier démarrage (volume vide).
 
 ## Test rapide
 
