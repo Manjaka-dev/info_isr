@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# IDE
+.idea/
+
+# User uploads (keep directory structure)
+uploads/*
+!uploads/.gitkeep
+
+# macOS
+.DS_Store
+
+# Docker volumes and temporary files
+.docker/
+docker-compose.override.yml
+
+# PHP / Composer
+vendor/
+composer.lock
+
+# Logs and temporary files
+*.log
+*.tmp
+*.cache

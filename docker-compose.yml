@@ -1,0 +1,45 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: info_isr_web
+    ports:
+      - "${APP_PORT:-8088}:80"
+    environment:
+      DB_HOST: ${DB_HOST:-db}
+      DB_PORT: "${DB_PORT:-3306}"
+      DB_NAME: ${DB_NAME:-opti_info}
+      DB_USER: ${DB_USER:-app}
+      DB_PASS: ${DB_PASS:-app}
+      DB_CHARSET: ${DB_CHARSET:-utf8mb4}
+    volumes:
+      - ./:/var/www/html/optim/info_isr
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mariadb:${MARIADB_VERSION:-10.4.28}
+    container_name: info_isr_db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-opti_info}
+      MARIADB_USER: ${MARIADB_USER:-app}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:-app}
+      TZ: ${TZ:-Europe/Paris}
+    ports:
+      - "${DB_EXPOSE_PORT:-3307}:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MARIADB_ROOT_PASSWORD:-root}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./data/data.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+
+volumes:
+  db_data:
+
