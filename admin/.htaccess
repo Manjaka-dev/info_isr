@@ -1,4 +1,3 @@
-AuthType Basic
-AuthName "Accès restreint - Administration"
-AuthUserFile /Applications/XAMPP/xamppfiles/htdocs/optim/info_isr/admin/.htpasswd
-Require valid-user
+<FilesMatch "^\.ht">
+  Require all denied
+</FilesMatch>

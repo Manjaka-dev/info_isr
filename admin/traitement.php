@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/auth.php';
+requireAdminAuth();
+
 // On inclut la connexion PDO
 require_once __DIR__ . '/../includes/connection.php';
 

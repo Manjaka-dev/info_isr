@@ -16,10 +16,6 @@ RUN apt-get update \
 COPY docker/php/allow-override.conf /etc/apache2/conf-available/allow-override.conf
 RUN a2enconf allow-override
 
-# Compatibilite avec admin/.htaccess qui reference un chemin absolu XAMPP
-RUN mkdir -p /Applications/XAMPP/xamppfiles/htdocs/optim/info_isr/admin \
-    && ln -sf /var/www/html/optim/info_isr/admin/.htpasswd \
-      /Applications/XAMPP/xamppfiles/htdocs/optim/info_isr/admin/.htpasswd
 
 WORKDIR /var/www/html
 

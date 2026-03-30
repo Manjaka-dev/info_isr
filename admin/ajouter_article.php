@@ -1,4 +1,9 @@
-<?php $base_url = '/optim/info_isr'; ?>
+<?php
+require_once __DIR__ . '/auth.php';
+requireAdminAuth();
+
+$base_url = '/optim/info_isr';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,6 +31,9 @@
 </head>
 <body>
 <main class="admin-container">
+<div class="admin-topbar">
+    <a class="admin-logout" href="<?= $base_url ?>/admin/logout.php">Deconnexion</a>
+</div>
 <h1>Rédiger un nouvel article</h1>
 
 <form action="<?= $base_url ?>/admin/traitement.php" method="POST" enctype="multipart/form-data">

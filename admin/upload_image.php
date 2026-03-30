@@ -1,4 +1,13 @@
 <?php
+require_once __DIR__ . '/auth.php';
+
+if (!isAdminAuthenticated()) {
+    http_response_code(401);
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Non autorise.']);
+    exit;
+}
+
 header('Content-Type: application/json');
 
 $dir = __DIR__ . '/../uploads/';

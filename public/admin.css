@@ -29,6 +29,26 @@ body {
     box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
 }
 
+.admin-login-container {
+    max-width: 460px;
+}
+
+.admin-topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+}
+
+.admin-logout {
+    text-decoration: none;
+    color: var(--admin-primary);
+    font-weight: 600;
+}
+
+.admin-logout:hover {
+    color: var(--admin-primary-hover);
+}
+
 h1 {
     margin: 0 0 1.25rem;
     font-size: 1.6rem;
@@ -69,6 +89,15 @@ label {
 
 .admin-btn:hover {
     background: var(--admin-primary-hover);
+}
+
+.admin-alert {
+    background: #ffe7e7;
+    color: #a11f1f;
+    border: 1px solid #f5c2c2;
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .tox-tinymce {
